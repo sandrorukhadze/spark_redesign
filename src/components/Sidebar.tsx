@@ -30,7 +30,6 @@ const menuItems: MenuItem[] = [
     icon: <FiSettings />,
     children: [
       { name: "Groups", path: "/manage/groups", icon: <FiCheckCircle /> },
-      // აქ შეგიძლია დაამატო სხვა ქვეპუნქტებიც
     ],
   },
 ];

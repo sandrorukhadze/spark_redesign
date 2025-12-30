@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FiBell, FiUser } from "react-icons/fi";
 import NotificationBox from "./NotificationBox";
 import { useNotifications } from "../hooks/useNotifications";
+import keycloak from "../lib/keycloak";
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -10,6 +11,7 @@ const Header: React.FC = () => {
   const { data } = useNotifications();
 
   const unreadCount = data?.content.filter((n) => !n.isRead).length ?? 0;
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   // ✅ გარეთ დაკლიკებაზე დაიხუროს
   useEffect(() => {
@@ -23,7 +25,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="flex items-center justify-between px-6 py-4 bg-white border-b shadow-sm sticky top-0 z-10">
-      <h1 className="text-xl font-semibold text-gray-800">My App</h1>
+      <h1 className="text-xl font-semibold text-gray-800"></h1>
 
       {/* ✅ wrapper must be relative */}
       <div className="relative" ref={wrapRef}>
@@ -50,13 +52,29 @@ const Header: React.FC = () => {
           </button>
 
           {/* User */}
-          <button
-            type="button"
-            className="p-2 rounded-full hover:bg-gray-100 transition"
-            aria-label="User menu"
-          >
-            <FiUser className="w-6 h-6 text-gray-600" />
-          </button>
+          {/* User */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setUserMenuOpen((prev) => !prev)}
+              className="p-2 rounded-full hover:bg-gray-100 transition"
+              aria-label="User menu"
+            >
+              <FiUser className="w-6 h-6 text-gray-600" />
+            </button>
+
+            {userMenuOpen && (
+              <div className="absolute right-0 mt-2 z-50 bg-white border rounded shadow-md p-4 w-48">
+                <h1 className="text-sm font-semibold mb-2">User Profile</h1>
+                <button
+                  onClick={() => keycloak.logout()}
+                  className="w-full px-4 py-2 text-sm text-left text-red-600 hover:bg-red-100 rounded"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* ✅ dropdown */}

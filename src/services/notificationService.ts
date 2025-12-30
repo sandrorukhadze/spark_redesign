@@ -62,3 +62,18 @@ export const fetchNotificationDetail = async (
   const { data } = await api.get(`/api/notifications/${id}`);
   return data;
 };
+
+export const setNotificationReadStatus = async (
+  id: number,
+  isRead: boolean
+): Promise<void> => {
+  await api.put(
+    `/api/notifications/${id}/read`,
+    isRead, // ✅ raw boolean
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+};
