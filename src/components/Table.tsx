@@ -12,6 +12,7 @@ interface TableProps<T> {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  onRowClick?: (row: T) => void;
 }
 
 function Table<T>({
@@ -20,6 +21,7 @@ function Table<T>({
   currentPage,
   totalPages,
   onPageChange,
+  onRowClick,
 }: TableProps<T>) {
   useEffect(() => {
     if (currentPage >= totalPages) {
@@ -45,7 +47,11 @@ function Table<T>({
 
         <tbody className="divide-y">
           {data.map((row, rowIndex) => (
-            <tr key={rowIndex} className="hover:bg-gray-50">
+            <tr
+              key={rowIndex}
+              className="hover:bg-gray-50 cursor-pointer transition"
+              onClick={() => onRowClick?.(row)} // ✅ OK
+            >
               {columns.map((col) => {
                 const content = col.render
                   ? col.render(row[col.accessor], row)

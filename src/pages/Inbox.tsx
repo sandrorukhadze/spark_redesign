@@ -10,6 +10,7 @@ import {
   MdOutlineSummarize,
   MdRefresh,
 } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const PAGE_SIZE = 10;
 
@@ -29,6 +30,7 @@ const Inbox = () => {
   };
 
   const { data, isLoading, error } = useDeals(baseParams);
+  const navigate = useNavigate();
 
   const deals = data?.content ?? [];
   const totalPages = data?.totalPages ?? 1;
@@ -124,13 +126,16 @@ const Inbox = () => {
         </div>
       </div>
 
-      <Table<Deal>
-        columns={columns}
-        data={deals}
-        currentPage={page}
-        totalPages={totalPages}
-        onPageChange={(newPage) => setPage(newPage)}
-      />
+      <div className="w-full overflow-x-auto">
+        <Table<Deal>
+          columns={columns}
+          data={deals}
+          currentPage={page}
+          totalPages={totalPages}
+          onPageChange={(newPage) => setPage(newPage)}
+          onRowClick={(row: Deal) => navigate(`/deals/${row.id}`)} 
+        />
+      </div>
     </div>
   );
 };

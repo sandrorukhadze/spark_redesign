@@ -9,6 +9,7 @@ import Archive from "../pages/Archive";
 import CallCenter from "../pages/CallCenter";
 import Groups from "../pages/Groups";
 import GroupDetails from "../pages/GroupDetails";
+import SingleDealPage from "../pages/SingleDealPage";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
       <Route path="/callcenter" element={<CallCenter />} />
       <Route path="/manage/groups" element={<Groups />} />
       <Route path="manage/groups/:id" element={<GroupDetails />} />
+      <Route path="/deals/:id" element={<SingleDealPage />} />
 
       {/* Optional: fallback route */}
       <Route path="*" element={<div>404 - Page not found</div>} />
