@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
 
-import SingleDeal from "../components/SingleDeal";
-import SingleLead from "../components/SingleLead";
-import ProgressStatusBox from "../components/ProgressStatusBox";
-import ActionBox from "../components/ActionBox";
-import ActivitiesBox from "../components/ActivitiesBox";
-import ConsentsBox from "../components/ConsentsBox";
+const SingleDeal = lazy(() => import("../components/SingleDeal"));
+const SingleLead = lazy(() => import("../components/SingleLead"));
+const ProgressStatusBox = lazy(() => import("../components/ProgressStatusBox"));
+const ActionBox = lazy(() => import("../components/ActionBox"));
+const ActivitiesBox = lazy(() => import("../components/ActivitiesBox"));
+const ConsentsBox = lazy(() => import("../components/ConsentsBox"));
 
 const SingleDealPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,17 +21,29 @@ const SingleDealPage: React.FC = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 space-y-8">
-      <ProgressStatusBox dealId={id} />
+      <Suspense fallback={<div>Loading Progress Status...</div>}>
+        <ProgressStatusBox dealId={id} />
+      </Suspense>
 
-      <SingleDeal id={id} />
+      <Suspense fallback={<div>Loading Deal...</div>}>
+        <SingleDeal id={id} />
+      </Suspense>
 
-      <ActionBox />
+      <Suspense fallback={<div>Loading Actions...</div>}>
+        <ActionBox />
+      </Suspense>
 
-      <ConsentsBox dealId={id} />
+      <Suspense fallback={<div>Loading Consents...</div>}>
+        <ConsentsBox dealId={id} />
+      </Suspense>
 
-      <ActivitiesBox dealId={id} />
+      <Suspense fallback={<div>Loading Activities...</div>}>
+        <ActivitiesBox dealId={id} />
+      </Suspense>
 
-      <SingleLead id={id} />
+      <Suspense fallback={<div>Loading Lead...</div>}>
+        <SingleLead id={id} />
+      </Suspense>
     </div>
   );
 };

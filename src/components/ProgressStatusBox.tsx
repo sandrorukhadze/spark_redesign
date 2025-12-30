@@ -69,7 +69,7 @@ const ProgressStatusBox: React.FC<Props> = ({ dealId }) => {
           const Icon = status.icon;
 
           return (
-            <div key={status.code} className="flex-1 text-center relative z-10">
+            <div key={status.code} className="flex-1 text-center relative">
               {/* Circle with icon */}
               <div
                 className={`w-11 h-11 mx-auto rounded-full flex items-center justify-center text-lg shadow-sm transition-all

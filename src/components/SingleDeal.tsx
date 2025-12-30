@@ -11,7 +11,7 @@ const SingleDeal: React.FC<{ id: string }> = ({ id }) => {
   const { deal } = data;
 
   return (
-    <div className="rounded-xl p-6 bg-white rounded shadow max-w-3xl mx-auto text-sm text-gray-800 space-y-2">
+    <div className="rounded-xl p-6 bg-white shadow max-w-3xl mx-auto text-sm text-gray-800 space-y-2">
       <h1 className="text-xl font-bold text-gray-900 mb-4">📄 Deal Details</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">

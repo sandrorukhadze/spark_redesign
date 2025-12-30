@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDeals } from "../hooks/useDeals";
 import Table, { type Column } from "../components/Table";
 import { type Deal } from "../types/Deal";
