@@ -11,59 +11,56 @@ const actions = [
   {
     key: "call",
     label: "დარეკვა",
-    icon: <MdCall className="text-blue-500" size={20} />,
-    onClick: () => {
-      console.log("დარეკვა");
-    },
+    icon: MdCall,
+    color: "text-blue-500",
+    onClick: () => console.log("დარეკვა"),
   },
   {
     key: "edit",
     label: "შეცვლა",
-    icon: <MdEdit className="text-green-500" size={20} />,
-    onClick: () => {
-      console.log("შეცვლა");
-    },
+    icon: MdEdit,
+    color: "text-green-500",
+    onClick: () => console.log("შეცვლა"),
   },
   {
     key: "status",
     label: "სტატუსი",
-    icon: <MdTrackChanges className="text-orange-500" size={20} />,
-    onClick: () => {
-      console.log("სტატუსი");
-    },
+    icon: MdTrackChanges,
+    color: "text-orange-500",
+    onClick: () => console.log("სტატუსი"),
   },
   {
     key: "sign",
     label: "ხელმოწერა",
-    icon: <MdDraw className="text-purple-500" size={20} />,
-    onClick: () => {
-      console.log("ხელმოწერა");
-    },
+    icon: MdDraw,
+    color: "text-purple-500",
+    onClick: () => console.log("ხელმოწერა"),
   },
   {
     key: "comment",
     label: "კომენტარი",
-    icon: <MdComment className="text-gray-600" size={20} />,
-    onClick: () => {
-      console.log("კომენტარი");
-    },
+    icon: MdComment,
+    color: "text-gray-600",
+    onClick: () => console.log("კომენტარი"),
   },
 ];
 
 const ActionBox: React.FC = () => {
   return (
-    <div className="p-6 bg-white rounded shadow max-w-3xl mx-auto">
-      <h2 className="text-lg font-semibold mb-4 text-gray-900">⚙️ ქმედებები</h2>
+    <div className="p-6 bg-white rounded-xl shadow max-w-3xl mx-auto">
+      <h2 className="text-lg font-semibold mb-5 text-gray-900">⚙️ ქმედებები</h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-        {actions.map((action) => (
+        {actions.map(({ key, label, icon: Icon, color, onClick }) => (
           <button
-            key={action.key}
-            onClick={action.onClick}
-            className="flex flex-col items-center justify-center p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded transition"
+            key={key}
+            onClick={onClick}
+            className="flex flex-col items-center justify-center p-4 bg-gray-50 hover:bg-white border border-gray-200 rounded-lg transition-transform transform hover:scale-[1.03] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-200"
           >
-            {action.icon}
-            <span className="mt-2 text-sm text-gray-700">{action.label}</span>
+            <Icon className={`${color}`} size={24} />
+            <span className="mt-2 text-sm font-medium text-gray-700">
+              {label}
+            </span>
           </button>
         ))}
       </div>
