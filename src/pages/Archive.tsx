@@ -4,6 +4,7 @@ import Table, { type Column } from "../components/Table";
 import { type Deal } from "../types/Deal";
 import Button from "../components/Button";
 import SearchInput from "../components/SearchInput";
+import { useNavigate } from "react-router-dom";
 
 const PAGE_SIZE = 10;
 
@@ -11,6 +12,7 @@ const Archive = () => {
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const { data, isLoading, error } = useDeals({
     dealStatuses: "ARCHIVED",
@@ -77,6 +79,7 @@ const Archive = () => {
         currentPage={page}
         totalPages={totalPages}
         onPageChange={(newPage) => setPage(newPage)}
+        onRowClick={(row: Deal) => navigate(`/deals/${row.id}`)}
       />
     </div>
   );

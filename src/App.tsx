@@ -5,16 +5,16 @@ import AppRoutes from "./routes";
 const App: React.FC = () => {
   return (
     <div>
-      {/* Fixed Sidebar */}
+      {/* Sidebar (left) */}
       <Sidebar />
 
-      {/* Main content area (pushed right by sidebar width) */}
+      {/* Main area */}
       <div className="pl-64 min-h-screen bg-gray-100 flex flex-col">
-        {/* Header */}
+        {/* Sticky Header */}
         <Header />
 
         {/* Page Content */}
-        <main className="flex-1 p-4">
+        <main className="flex-1 p-4 overflow-y-auto">
           <AppRoutes />
         </main>
       </div>

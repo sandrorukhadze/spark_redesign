@@ -8,6 +8,7 @@ import SearchInput from "../components/SearchInput";
 import { MdAdd } from "react-icons/md";
 import Modal from "../components/Modal";
 import CreateLeadForm from "../components/Forms/CreateLeadForm";
+import { useNavigate } from "react-router-dom";
 
 const PAGE_SIZE = 10;
 
@@ -16,6 +17,7 @@ const CreatedByMe = () => {
   const [search, setSearch] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   // 🔹 მომხმარებლის ინფორმაცია
   const { data: user, isLoading: isUserLoading } = useUserMe();
@@ -107,6 +109,7 @@ const CreatedByMe = () => {
         currentPage={page}
         totalPages={totalPages}
         onPageChange={(newPage) => setPage(newPage)}
+        onRowClick={(row: Deal) => navigate(`/deals/${row.id}`)}
       />
     </div>
   );

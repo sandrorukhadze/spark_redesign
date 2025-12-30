@@ -15,7 +15,7 @@ const ActivitiesBox: React.FC<Props> = ({ dealId }) => {
 
   if (activities.length === 0) {
     return (
-      <div className="p-6 bg-white rounded shadow max-w-3xl mx-auto text-sm text-gray-600">
+      <div className="p-6 bg-white rounded-xl shadow max-w-3xl mx-auto text-sm text-gray-600">
         <h2 className="text-lg font-semibold mb-2">📋 აქტივობები</h2>
         <p>აქტივობები არ მოიძებნა</p>
       </div>
@@ -23,7 +23,7 @@ const ActivitiesBox: React.FC<Props> = ({ dealId }) => {
   }
 
   return (
-    <div className="p-6 bg-white rounded shadow max-w-3xl mx-auto text-sm text-gray-800">
+    <div className="p-6 bg-white rounded-xl shadow max-w-3xl mx-auto text-sm text-gray-800">
       <h2 className="text-lg font-semibold text-gray-900 mb-4">
         📋 აქტივობები
       </h2>

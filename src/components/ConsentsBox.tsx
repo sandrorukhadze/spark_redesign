@@ -46,7 +46,7 @@ const ConsentsBox: React.FC<Props> = ({ dealId }) => {
   );
 
   return (
-    <div className="p-6 bg-white rounded shadow max-w-3xl mx-auto text-sm text-gray-800">
+    <div className="rounded-xl p-6 bg-white  shadow max-w-3xl mx-auto text-sm text-gray-800">
       <h2 className="text-lg font-semibold text-gray-900 mb-4">
         📝 თანხმობები
       </h2>
